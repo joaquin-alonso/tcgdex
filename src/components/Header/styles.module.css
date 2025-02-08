@@ -1,0 +1,35 @@
+.header {
+  align-items: center;
+  background: var(--background);
+  border-bottom: 1px solid var(--foreground);
+  display: flex;
+  flex-direction: row;
+  font-family: var(--font-geist-mono);
+  height: var(--header-height);
+  left: 0;
+  padding: 0 16px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+}
+
+.header a {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  gap: 8px;
+}
+
+.logo {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 600px) {
+  .header {
+    justify-content: center;
+    padding-left: var(--nav-width);
+  }
+}
