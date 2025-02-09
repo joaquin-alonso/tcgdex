@@ -1,0 +1,98 @@
+.spinner {
+  animation: spin 0.75s linear infinite;
+  border-radius: 50%;
+  border-color: currentColor currentColor currentColor transparent;
+  border-style: solid;
+  border-width: var(--spinner-width);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 6px;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    border-radius: 50%;
+    background: inherit;
+    position: absolute;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    width: var(--spinner-width);
+    height: var(--spinner-width);
+    border-radius: 50%;
+    background: currentColor;
+    position: absolute;
+  }
+}
+
+.spinner span {
+  border: 0px;
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.spinnerS {
+  --spinner-width: 2px;
+  height: 16px;
+  width: 16px;
+
+  &:before {
+    left: 0;
+    top: 0;
+  }
+
+  &:after {
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.spinnerM {
+  --spinner-width: 2px;
+  height: 20px;
+  width: 20px;
+
+  &:before {
+    left: 0.66px;
+    top: 0.66px;
+  }
+
+  &:after {
+    left: 0.66px;
+    bottom: 0.66px;
+  }
+}
+
+.spinnerL {
+  --spinner-width: 4px;
+  height: 40px;
+  width: 40px;
+
+  &:before {
+    left: 1.25px;
+    top: 1.25px;
+  }
+
+  &:after {
+    left: 1.25px;
+    bottom: 1.25px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

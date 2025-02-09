@@ -12,7 +12,7 @@ export function Nav() {
           </Link>
         </li>
         <li className={styles.listItem}>
-          <Link href="/list" className={styles.link}>
+          <Link href="/table" className={styles.link}>
             <FcViewDetails /> <span>Cards list</span>
           </Link>
         </li>

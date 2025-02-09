@@ -37,5 +37,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Improvements
 
-- The code could be more abstract in order to support multiple TCGs. Who knows, maybe Ash decids to start playing MTG as well.
-- Make Layout components more presentational instead of hardcoding data
+When I first read the instructions I thought "maybe Ash wants to play MTG later in life so I could make this work with multiple TCGs" so I started writing the services and components as abstract and decoupled as possible. Then I saw the time it was and I had to stop haha. There were some tools that I wanted to play a bit with so this took more the half a day, and still theres a lot of things that could be improved:
+
+- Make Layout components more presentational instead of hardcoding the data
+- Add tests
+- Add a normalizer function to the Pokemon Service in case of having another TCG
+- Table page:
+  - Add Pagination
+  - Get filter values from API
+  - Add filter to allow more items per page and possibly data virtualization
+  - Possibly use a Headless Table like `TanStack Table`
+  - Make it pretty =)
