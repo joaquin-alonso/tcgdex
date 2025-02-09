@@ -53,6 +53,7 @@ export function StatsLoader({
           setIsLoading(false);
         }
       } catch (e) {
+        console.log(e);
         setError(true);
       }
     };
@@ -61,7 +62,7 @@ export function StatsLoader({
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [filterName, filterTemplate, statCategories]);
 
   return (
     <Stats data={data} error={error} isLoading={isLoading} title={title} />

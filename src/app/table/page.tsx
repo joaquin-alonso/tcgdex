@@ -25,7 +25,7 @@ export default function TablePage() {
     q: [
       ...(name ? [`name:"${name}*"`] : ''),
       ...(type ? [`types:${type}`] : ''),
-      ...(rarity ? [`rarity:${rarity}`] : ''),
+      ...(rarity ? [`rarity:"${rarity}"`] : ''),
       ...(legality ? [`legalities.${legality}:legal`] : ''),
     ].join(' '),
   });
@@ -77,16 +77,17 @@ export default function TablePage() {
           {
             key: 'images',
             label: 'Image',
-            renderer: (image) => (
-              <Image
-                className={styles.cardImage}
-                src={image.small}
-                alt="Next.js logo"
-                width={40}
-                height={40}
-                priority
-              />
-            ),
+            renderer: (image) =>
+              image && (
+                <Image
+                  className={styles.cardImage}
+                  src={image.small}
+                  alt="Pokemon Card"
+                  width={57}
+                  height={80}
+                  priority
+                />
+              ),
           },
           {
             key: 'name',
@@ -95,12 +96,13 @@ export default function TablePage() {
           {
             key: 'types',
             label: 'Types',
-            renderer: (types) => `${types.join(' ')}`,
+            renderer: (types) => (types?.length ? `${types.join(' ')}` : '-'),
           },
           {
             key: 'subtypes',
             label: 'Subtypes',
-            renderer: (subtypes) => `${subtypes.join(' ')}`,
+            renderer: (subtypes) =>
+              subtypes?.length ? `${subtypes.join(' ')}` : '-',
           },
           {
             key: 'rarity',
@@ -110,14 +112,16 @@ export default function TablePage() {
             key: 'legalities',
             label: 'Legality',
             renderer: (legalities) =>
-              (Object.keys(legalities) as Array<keyof typeof legalities>)
-                .filter((legality) => legalities[legality] === 'Legal')
-                .join(' '),
+              legalities
+                ? (Object.keys(legalities) as Array<keyof typeof legalities>)
+                    .filter((legality) => legalities[legality] === 'Legal')
+                    .join(', ')
+                : '-',
           },
           {
             key: 'set',
             label: 'Set Name',
-            renderer: (set) => set.name,
+            renderer: (set) => set?.name || '-',
           },
         ]}
         data={data.data}

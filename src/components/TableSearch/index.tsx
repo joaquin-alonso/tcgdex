@@ -8,6 +8,7 @@ import {
   PokemonCardRarity,
   PokemonCardLegality,
 } from '@/types/PokemonCard';
+import styles from './styles.module.css';
 
 export interface TableFiltersProps {
   submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -25,7 +26,7 @@ export function TableSearch({
   legality,
 }: TableFiltersProps) {
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <input
         defaultValue={name}
         name="name"

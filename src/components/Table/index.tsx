@@ -18,27 +18,41 @@ export function Table<T extends { id: string }>({
   data,
 }: TableProps<T>) {
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={`th-${String(column.key)}`}>{column.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row) => (
-          <tr key={row.id}>
-            {columns.map((column) => (
-              <td key={`td-${String(column.key)}`}>
-                {column.renderer
-                  ? column.renderer(row[column.key])
-                  : String(row[column.key])}
-              </td>
+    <div className={styles.wrapper}>
+      {data.length ? (
+        <table className={styles.table}>
+          <thead>
+            <tr className={styles.headRow}>
+              {columns.map((column) => (
+                <th
+                  key={`th-${String(column.key)}`}
+                  className={styles.headCell}
+                >
+                  {column.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row) => (
+              <tr key={row.id} className={styles.bodyRow}>
+                {columns.map((column) => (
+                  <td
+                    key={`td-${String(column.key)}`}
+                    className={styles.bodyCell}
+                  >
+                    {column.renderer
+                      ? column.renderer(row[column.key])
+                      : String(row[column.key])}
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      ) : (
+        <p>No cards were found for your search.</p>
+      )}
+    </div>
   );
 }

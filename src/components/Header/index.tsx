@@ -6,11 +6,11 @@ export function Header() {
   return (
     <header className={styles.header}>
       <Link href="/">
-        Ash's TCGDex{' '}
+        Ash&apos;s TCGDex{' '}
         <Image
           className={styles.logo}
           src="/pikachu.svg"
-          alt="Next.js logo"
+          alt="TCGDex"
           width={40}
           height={40}
           priority

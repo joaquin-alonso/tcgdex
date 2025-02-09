@@ -1,0 +1,32 @@
+.wrapper {
+  overflow: auto;
+  width: 100%;
+}
+
+.table {
+  border-spacing: 0;
+  min-width: 100%;
+  text-align: left;
+}
+
+.headRow {
+  background-color: var(--gray-alpha-100);
+}
+
+.bodyRow:nth-child(even) {
+  background-color: var(--gray-alpha-100);
+}
+
+.headCell {
+  font-family: var(--font-geist-mono);
+  padding: 16px 8px;
+}
+
+.bodyCell {
+  font-family: var(--font-geist-mono);
+  padding: 4px 8px;
+}
+
+.cell img {
+  display: block;
+}

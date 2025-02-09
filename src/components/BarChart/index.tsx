@@ -52,7 +52,6 @@ export function BarChart({
 
     let barChart: echarts.EChartsType;
     const resizeHandler = () => {
-      console.log('RESIZE');
       barChart?.resize();
     };
 
@@ -112,6 +111,7 @@ export function BarChart({
           window.addEventListener('resize', resizeHandler);
         }
       } catch (e) {
+        console.log(e);
         setError(true);
       }
     };
@@ -121,7 +121,7 @@ export function BarChart({
       ignore = true;
       window.removeEventListener('resize', resizeHandler);
     };
-  }, []);
+  }, [chartCategories, chartColors, filterName, filterTemplate, id]);
 
   return (
     <div className={styles.wrapper}>

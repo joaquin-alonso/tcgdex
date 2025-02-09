@@ -7,6 +7,7 @@
 
 .title {
   border-bottom: 1px solid var(--foreground);
+
   font-size: 16px;
   margin-bottom: 16px;
   padding-bottom: 16px;
@@ -18,6 +19,7 @@
 
 .stat {
   display: flex;
+  font-family: var(--font-geist-mono);
   justify-content: space-between;
   margin-top: 4px;
   padding: 8px;
