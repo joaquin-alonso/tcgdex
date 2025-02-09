@@ -1,29 +1,40 @@
 'use client';
 
 import { Page } from '@/components/Page';
-import { usePokemonCards } from '@/hooks/usePokemonCards';
-import { Spinner } from '@/components/Spinner';
+import { PokemonBarChart } from '@/components/BarChart';
+import { CARD_SUPERTYPES, CARD_TYPES } from '@/constants/pokemon';
+import styles from './styles.module.css';
 
 export default function DashboardPage() {
-  const { data, error, isLoading } = usePokemonCards({
-    pageSize: 10,
-  });
-
-  if (isLoading) {
-    return (
-      <Page title="Cards list">
-        <Spinner size="l" />
-      </Page>
-    );
-  }
-
-  if (error || !data) {
-    return (
-      <Page title="Cards list">
-        <p>Ups! Something went wrong ¯\_(ツ)_/¯</p>
-      </Page>
-    );
-  }
-
-  return <Page title="Dashboard"></Page>;
+  return (
+    <Page title="Dashboard">
+      <div className={styles.charts}>
+        <PokemonBarChart
+          chartCategories={CARD_TYPES as unknown as string[]}
+          chartColors={[
+            '#D2D0CF',
+            '#2E7077',
+            '#948F31',
+            '#D6457E',
+            '#B06232',
+            '#D7223B',
+            '#19A648',
+            '#FCD020',
+            '#9B9E8C',
+            '#957DAB',
+            '#04A7D9',
+          ]}
+          filterName="types"
+          id="byType"
+          title="Cards by Type"
+        />
+        <PokemonBarChart
+          chartCategories={CARD_SUPERTYPES as unknown as string[]}
+          filterName="supertype"
+          id="bySupertype"
+          title="Cards by Supertype"
+        />
+      </div>
+    </Page>
+  );
 }

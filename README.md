@@ -42,6 +42,10 @@ When I first read the instructions I thought "maybe Ash wants to play MTG later 
 - Make Layout components more presentational instead of hardcoding the data
 - Add tests
 - Add a normalizer function to the Pokemon Service in case of having another TCG
+- Dashboard:
+  - Add more graphics. E.g.: Select a Set and show a PieChart with the number of cards per each Supertype, and a ScatterPlot analyzing the relation between the HP and MaxDamage of the pokemons, to compare how potentially powerful each Set is.
+  - Having to make multiple requests to generate 1 graph is not ideal. We should modify the API to get multiple counts at once, or at least handle concurrency when loading the data.
+  - Debounce the resize handler
 - Table page:
   - Add Pagination
   - Get filter values from API
