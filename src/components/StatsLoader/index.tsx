@@ -54,6 +54,7 @@ export function StatsLoader({
         }
       } catch (e) {
         console.log(e);
+        setIsLoading(false);
         setError(true);
       }
     };

@@ -112,6 +112,7 @@ export function BarChart({
         }
       } catch (e) {
         console.log(e);
+        setIsLoading(false);
         setError(true);
       }
     };

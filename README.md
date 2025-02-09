@@ -1,6 +1,6 @@
 ## View it live
 
-The project is deployed in Vercel:
+The project is deployed in Vercel: https://tcgdex-1wou.vercel.app/
 
 ## Running locally
 
@@ -9,6 +9,8 @@ First, install the dependencies:
 ```
 npm i
 ```
+
+Copy the `.default.env` file and rename it to `.env`. Inside set the value of your [Pokemon TCG Api Key](https://docs.pokemontcg.io/getting-started/authentication). This is not mandatory but recommended as the application does quite a few requests and the API has a limited quota. Otherwise I recommend commenting some of the `StatsLoader` components in the `SummaryPage`.
 
 Then, run the development server:
 
@@ -24,9 +26,9 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Improvements
+## Approach and improvements
 
-When I first read the instructions I thought "maybe Ash wants to play MTG later in life so I could make this work with multiple TCGs" so I started writing the services and components as abstract and decoupled as possible. Then I saw the time it was and I had to stop haha. There were some tools that I wanted to play a bit with so this took more than half a day, and still theres a lot of things that could be improved:
+When I first read the instructions I thought "maybe Ash wants to play MTG later in life so I could make this work with multiple TCGs" thus I started writing the services and components as abstract and decoupled as possible. Then I saw the time it was and I had to stop 😆. There were some tools that I wanted to play a bit with so this took more than half a day, and still theres a lot of things that could be improved:
 
 - Make Layout components more presentational instead of hardcoding the data
 - Add tests
