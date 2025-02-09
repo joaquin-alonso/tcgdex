@@ -48,7 +48,9 @@ When I first read the instructions I thought "maybe Ash wants to play MTG later 
   - Debounce the resize handler
 - Table page:
   - Add Pagination
-  - Get filter values from API
-  - Add filter to allow more items per page and possibly data virtualization
+  - Maybe get filter values from API
+  - Add dropdown to allow more items per page and possibly data virtualization
   - Possibly use a Headless Table like `TanStack Table`
   - Make it pretty =)
+- Summary:
+  - Having to make multiple requests to generate 1 list of Stats is not ideal. We should modify the API to get multiple counts at once, or at least handle concurrency when loading the data.

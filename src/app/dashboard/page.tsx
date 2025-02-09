@@ -1,7 +1,7 @@
 'use client';
 
 import { Page } from '@/components/Page';
-import { PokemonBarChart } from '@/components/BarChart';
+import { BarChart } from '@/components/BarChart';
 import { CARD_SUPERTYPES, CARD_TYPES } from '@/constants/pokemon';
 import styles from './styles.module.css';
 
@@ -9,7 +9,7 @@ export default function DashboardPage() {
   return (
     <Page title="Dashboard">
       <div className={styles.charts}>
-        <PokemonBarChart
+        <BarChart
           chartCategories={CARD_TYPES as unknown as string[]}
           chartColors={[
             '#D2D0CF',
@@ -28,7 +28,7 @@ export default function DashboardPage() {
           id="byType"
           title="Cards by Type"
         />
-        <PokemonBarChart
+        <BarChart
           chartCategories={CARD_SUPERTYPES as unknown as string[]}
           filterName="supertype"
           id="bySupertype"

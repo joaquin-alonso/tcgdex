@@ -1,0 +1,28 @@
+.stats {
+  border: 1px solid var(--foreground);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+}
+
+.title {
+  border-bottom: 1px solid var(--foreground);
+  font-size: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 8px;
+}
+
+.stat:nth-child(odd) {
+  background-color: var(--gray-alpha-100);
+}

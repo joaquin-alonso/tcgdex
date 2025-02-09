@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as echarts from 'echarts/core';
-import { BarChart } from 'echarts/charts';
+import { BarChart as EChartBarChart } from 'echarts/charts';
 import {
   TitleComponent,
   TooltipComponent,
@@ -10,27 +10,27 @@ import {
 } from 'echarts/components';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
-import { CardsResponse } from '@/services/tcg/TCGService';
 import { TCGServiceFactory } from '@/services/tcg/TCGServiceFactory';
-import { PokemonCard } from '@/types/PokemonCard';
 import { Spinner } from '../Spinner';
 import styles from './styles.module.css';
 
-export interface PokemonBarChartProps {
+export interface BarChartProps {
   chartCategories: string[];
   chartColors?: string[];
   filterName: string;
+  filterTemplate?: string;
   id: string;
   title: string;
 }
 
-export function PokemonBarChart({
+export function BarChart({
   chartCategories,
   chartColors,
   filterName,
+  filterTemplate = '{filterName}:"{category}"',
   id,
   title,
-}: PokemonBarChartProps) {
+}: BarChartProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -39,7 +39,7 @@ export function PokemonBarChart({
     setIsLoading(true);
 
     echarts.use([
-      BarChart,
+      EChartBarChart,
       TitleComponent,
       TooltipComponent,
       GridComponent,
@@ -59,12 +59,16 @@ export function PokemonBarChart({
     const fetchDataAndRenderChart = async () => {
       const service = TCGServiceFactory.createService('pokemon');
       try {
-        const responses = await Promise.all<CardsResponse<PokemonCard>>(
+        const responses = await Promise.all<
+          ReturnType<typeof service.searchCards>
+        >(
           chartCategories.map((category) => {
-            return service.searchCards<PokemonCard>({
+            return service.searchCards({
               page: 1,
               pageSize: 1,
-              q: `${filterName}:${category}`,
+              q: filterTemplate
+                .replace('{filterName}', filterName)
+                .replace('{category}', category),
             });
           })
         );
@@ -121,8 +125,8 @@ export function PokemonBarChart({
 
   return (
     <div className={styles.wrapper}>
-      <h3>{title}</h3>
-      {isLoading && <Spinner size="l" />}
+      <h3 className={styles.title}>{title}</h3>
+      {isLoading && <Spinner center size="l" />}
       {error && <p>Ups! Something went wrong ¯\_(ツ)_/¯</p>}
       <div
         className={styles.barChart}
