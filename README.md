@@ -1,3 +1,5 @@
+TCGDex is a dashboard to analyze cards in Trading Card Games, starting with Pokemon for now.
+
 ## View it live
 
 The project is deployed in Vercel: https://tcgdex-1wou.vercel.app/
@@ -28,19 +30,30 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Approach and improvements
 
+### Make it work
+
 When I first read the instructions I thought "maybe Ash wants to play MTG later in life so I could make this work with multiple TCGs" thus I started writing the services and components as abstract and decoupled as possible. Then I saw the time it was and I had to stop 😆. There were some tools that I wanted to play a bit with so this took more than half a day, and still theres a lot of things that could be improved:
 
-- Make Layout components more presentational instead of hardcoding the data
-- Add tests
-- Add a normalizer function to the Pokemon Service in case of having another TCG
 - Dashboard:
-  - Add more graphics. E.g.: Select a Set and show a PieChart with the number of cards per each Supertype, and a ScatterPlot analyzing the relation between the HP and MaxDamage of the pokemons, to compare how potentially powerful each Set is.
-  - Having to make multiple requests to generate 1 graph is not ideal. We should modify the API to get multiple counts at once, or at least handle concurrency when loading the data.
-  - Debounce the resize handler
+  - Add more graphs. E.g.: Select a Set and show a PieChart with the number of cards per each Supertype, and a ScatterPlot analyzing the relation between the HP and MaxDamage of the pokemons, to compare how potentially powerful each Set is
 - Table page:
   - Add Pagination
   - Maybe get filter values from API
   - Add dropdown to allow more items per page and possibly data virtualization
-  - Possibly use a Headless Table like `TanStack Table`
 - Summary:
-  - Having to make multiple requests to generate 1 list of Stats is not ideal. We should modify the API to get multiple counts at once, or at least handle concurrency when loading the data.
+  - Add more Stats related to the available Sets
+
+### Make it right
+
+- Improve the mobile experience and debounce the resize handler for the Charts
+- Make Layout components more presentational instead of hardcoding the data
+- Add a normalizer function to the Pokemon Service in case of having another TCG
+- Consider using a Headless Table like `TanStack Table`
+- Decouple the Table component from the Pokemon TCG or at least rename it to be more specific
+- Add tests
+
+### Make it right-er/fast
+
+- Having to make multiple requests to generate Charts and Stats is not ideal. We should modify the API to get multiple counts at once, or at least handle concurrency when loading the data
+- Implement SSR and ISR to cache pages server side for X minutes to avoid refetching and rerendering everything on reload
+- Add a cache to the API
